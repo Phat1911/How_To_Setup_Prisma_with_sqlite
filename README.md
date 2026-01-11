@@ -1,13 +1,14 @@
-To set prisma with sqlite in 2026, You need to follow these step in order:
+# To set prisma with sqlite in 2026, You need to follow these step in order:
 
-mkdir hello-prisma
-cd hello-prisma
-npm init -y
-npm install typescript tsx @types/node --save-dev
-npx tsc --init
-npx prisma init
+## CMD:
+  mkdir hello-prisma 
+  cd hello-prisma
+  npm init -y
+  npm install typescript tsx @types/node --save-dev
+  npx tsc --init
+  npx prisma init
 
-tsconfig.json:
+## Tsconfig.json:
 {
   "compilerOptions": {
     "module": "ESNext",
@@ -19,7 +20,7 @@ tsconfig.json:
   }
 }
 
-prisma.config.ts:
+## Prisma.config.ts:
 import { defineConfig } from 'prisma/config'
 
 export default defineConfig({
@@ -29,7 +30,7 @@ export default defineConfig({
   },
 })
 
-package.json:
+## Package.json:
 {
   "name": "prisma-demos",
   "type": "module",
@@ -59,7 +60,7 @@ package.json:
   }
 }
 
-index.ts:
+## Index.ts:
 import "dotenv/config";
 import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
 import { PrismaClient } from "./generated/prisma/client";
@@ -79,11 +80,11 @@ generator client {
   provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
-
-npm install prisma @types/node @types/pg --save-dev 
-npm install @prisma/client @prisma/adapter-pg pg dotenv
-npx prisma
-npx prisma migrate dev --name init
-npx prisma generate
-npx tsx index.ts
-npx prisma studio
+## CMD
+  npm install prisma @types/node @types/pg --save-dev 
+  npm install @prisma/client @prisma/adapter-pg pg dotenv
+  npx prisma
+  npx prisma migrate dev --name init
+  npx prisma generate
+  npx tsx index.ts
+  npx prisma studio
