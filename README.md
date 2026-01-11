@@ -94,7 +94,7 @@ generator client {
   
   
   const adapter = new PrismaBetterSqlite3({
-    url: "file:./prisma/dev.db"
+    url: "file:../prisma/dev.db"
   });
   
   const prisma = new PrismaClient({ adapter });
