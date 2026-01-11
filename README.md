@@ -9,6 +9,8 @@
   npx prisma init
 
 ## Tsconfig.json:
+
+```json
 {
   "compilerOptions": {
     "module": "ESNext",
