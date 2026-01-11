@@ -133,6 +133,7 @@ generator client {
 ```cmd
   npx prisma migrate dev --name init
   npx prisma generate
+  cd src
   npx tsx index.ts
   npx prisma studio
 ```
