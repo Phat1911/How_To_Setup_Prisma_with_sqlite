@@ -21,7 +21,7 @@
     "ignoreDeprecations": "6.0"
   }
 }
----
+```
 ## Prisma.config.ts:
 import { defineConfig } from 'prisma/config'
 
