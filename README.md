@@ -115,7 +115,9 @@ generator client {
   }
   
   async function main () {
-  
+    // anything you want
+    // Example:
+    await createMovie();
   }
   
   main()
