@@ -68,19 +68,6 @@ export default defineConfig({
 }
 ```
 
-## Index.ts:
-```ts
-import "dotenv/config";
-import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
-import { PrismaClient } from "./generated/prisma/client";
-
-
-const adapter = new PrismaBetterSqlite3({
-  url: "file:./prisma/dev.db"
-})
-const prisma = new PrismaClient({ adapter })
-```
-
 ## Schema.prisma:
 ```
 datasource db {
@@ -97,6 +84,51 @@ generator client {
   npm install prisma @types/node @types/pg --save-dev 
   npm install @prisma/client @prisma/adapter-pg pg dotenv
   npx prisma
+```
+
+## src/index.ts
+```ts
+  import "dotenv/config";
+  import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
+  import { PrismaClient } from "../generated/prisma/client";
+  
+  
+  const adapter = new PrismaBetterSqlite3({
+    url: "file:./prisma/dev.db"
+  });
+  
+  const prisma = new PrismaClient({ adapter });
+  
+  async function createMovie() {
+    const newMovie = await prisma.movie.create({
+      data: {
+        title: "Inception",
+        description:
+          "A cinematic masterpiece that seamlessly blends reality and dreams, Inception is a captivating story of a dream within a dream.",
+        genre: "Sci-Fi",
+        releaseDate: new Date("2010-07-16"),
+        rating: 8.8,
+      },
+    });
+  
+    console.log(newMovie);
+  }
+  
+  async function main () {
+  
+  }
+  
+  main()
+  .then(async() => await prisma.$disconnect())
+  .catch(async(e) => {
+    console.log(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  })
+```
+
+## CMD
+```cmd
   npx prisma migrate dev --name init
   npx prisma generate
   npx tsx index.ts
