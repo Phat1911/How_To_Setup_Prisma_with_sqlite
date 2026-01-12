@@ -86,6 +86,11 @@ generator client {
   npx prisma
 ```
 
+## .env
+```
+DATABASE_URL="file:./prisma/dev.db"
+```
+
 ## src/index.ts
 ```ts
   import "dotenv/config";
@@ -94,7 +99,7 @@ generator client {
   
   
   const adapter = new PrismaBetterSqlite3({
-    url: "file:../prisma/dev.db"
+    url: process.env.DATABASE_URL!
   });
   
   const prisma = new PrismaClient({ adapter });
